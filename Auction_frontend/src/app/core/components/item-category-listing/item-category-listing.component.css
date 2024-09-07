@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+
+}
+
+body {
+    background-color: #ffffff;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 2px solid #000;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    text-align: start;
+}
+
+.card {
+    width: 100%;
+    padding-top: 100%; /* This makes the height equal to the width, creating a square */
+    position: relative;
+}
+
+.card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-text {
+    font-size: 1rem;
+    font-weight: 500;
+}

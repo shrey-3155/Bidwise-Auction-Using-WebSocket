@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="signup-page.component.css">
+</head>
+<body>
+    <app-logo-header></app-logo-header>
+    <!-- Sign Up Form -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <form [formGroup]="signupForm" class="signup-form">
+            <h2 class="text-center mb-4">Create an Account</h2>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="auctionuser@mail.com" required>
+                <div *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched" class="text-danger">
+                    Valid email is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" class="form-control" id="firstname" formControlName="firstname" placeholder="Tom" required>
+                <div *ngIf="signupForm.controls['firstname'].invalid && signupForm.controls['firstname'].touched" class="text-danger">
+                    First name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" class="form-control" id="lastname" formControlName="lastname" placeholder="Raider" required>
+                <div *ngIf="signupForm.controls['lastname'].invalid && signupForm.controls['lastname'].touched" class="text-danger">
+                    Last name is required.
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="●●●●●●●" required>
+                <div *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched" class="text-danger">
+                    Password is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword" placeholder="●●●●●●●" required>
+                <div *ngIf="signupForm.controls['confirmPassword'].invalid && signupForm.controls['confirmPassword'].touched" class="text-danger">
+                    Confirmation password is required.
+                </div>
+                <div *ngIf="passwordMismatch && signupForm.controls['confirmPassword'].touched" class="text-danger">
+                    Passwords do not match.
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select class="form-control" id="country" formControlName="country" required>
+                    <option value="">Select a country</option>
+                    <option *ngFor="let country of countries.data" [ngValue]="country">{{ country }}</option>
+                </select>
+                <div *ngIf="signupForm.controls['country'].invalid && signupForm.controls['country'].touched" class="text-danger">
+                    Country selection is required.
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="city">City</label>
+                <select class="form-control" id="city" formControlName="city" required>
+                    <option value="">Select a city</option>
+                    <option *ngFor="let city of cities.data" [value]="city">{{ city }}</option>
+                </select>
+                <div *ngIf="signupForm.controls['city'].invalid && signupForm.controls['city'].touched" class="text-danger">
+                    City selection is required.
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="timezone">Timezone</label>
+                <select class="form-control" id="timezone" formControlName="timezone" required>
+                    <option value ="" selected>Select a timezone</option>
+                    <option *ngFor="let timezone of allTimeZones" [value]="timezone">{{ timezone }}</option>
+                </select>
+                <div *ngIf="signupForm.controls['timezone'].invalid && signupForm.controls['timezone'].touched" class="text-danger">
+                    Timezone selection is required.
+                </div>
+            </div>
+    
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input custom-radio-checkbox" id="terms" formControlName="terms" required>
+                <label class="form-check-label" for="terms">I have read and agree to the Privacy Policy, Terms and Conditions, and Terms of Service.</label>
+                <div *ngIf="signupForm.controls['terms'].invalid && signupForm.controls['terms'].touched" class="text-danger">
+                    You must agree to the terms.
+                </div>
+            </div>
+            <button type="submit" [disabled]="signupForm.invalid" (click)="postLoginRedirect()" class="btn btn-outline-dark btn-block mr-2">Sign Up</button>
+            <p class="text-center mt-3" style="margin-bottom: 16px;">Already Have An Account? <a (click)="LoginRedirect()" class="text-primary">Log In</a></p>
+        </form>
+    </div>  
+    <app-footer></app-footer>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<app-post-login-header></app-post-login-header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRADEBOOK</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tradebook.component.css">
+</head>
+<body>  
+    <div class="container mt-5">
+        <div class="text-start mb-4">
+            <h1 class="d-flex justify-content-between align-items-center p-3" style="border: 2px solid #000; font-weight: 700; font-size: 1.5rem;">TRADEBOOK</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div *ngIf="trades.data != ''" class="card p-3 mb-4" style="border: 2px solid #000;">
+            <hr class="my-4" style="border: 1px solid #000;"> 
+            <div *ngFor="let trade of trades.data"class="d-flex flex-column flex-md-row">    
+                <!-- <div class="item-image mr-3">
+                    <img [src]="item.itemPhoto" class="img-fluid" [alt]="item.itemName">
+                </div> -->
+                <div class="d-flex flex-column w-100">
+                    <div class="item-details w-100 d-flex justify-content-between flex-column flex-lg-row">
+                        <div class="detail custom-padding">
+                            <p>NAME OF ITEM</p>
+                            <h4>{{trade.nameOfItem}}</h4>
+                            <hr class="my-4" style="border: 1px solid #000;"> 
+                        </div>
+                        <div *ngIf = "trade.soldPrice == null" class="detail">
+                            <p>SOLD PRICE</p>
+                            <h4>UNSOLD</h4>
+                            <hr class="my-4" style="border: 1px solid #000;"> 
+                        </div>
+                        <div *ngIf = "trade.soldPrice != null" class="detail">
+                            <p>SOLD PRICE</p>
+                            <h4>{{trade.soldPrice}}</h4>
+                            <hr class="my-4" style="border: 1px solid #000;"> 
+                        </div>
+                        <div class="detail">
+                            <p>MY HIGHEST BID</p>
+                            <h4>{{trade.userHighestBid}}</h4>
+                            <hr class="my-4" style="border: 1px solid #000;"> 
+                        </div>
+                        <div class="detail">
+                            <p>DATE OF AUCTION</p>
+                            <h4>{{trade.dateOfAuction | date:'MM/dd/yyyy'}}</h4>
+                            <hr class="my-4" style="border: 1px solid #000;"> 
+                        </div>
+                        <button *ngIf="trade.auctionWon==true" (click)="getInvoice(trade.auctionId)" button class="btn btn-outline-dark">GET INVOICE</button>
+                        <!-- <button *ngIf="trade.auctionWon==false" button class="btn btn-outline-dark">AUCTION LOST</button> -->
+                        <div *ngIf="trade.auctionWon==false" class="auction-lost-message">
+                            AUCTION LOST
+                          </div>
+                    </div>
+                
+                </div>
+            </div>
+            <!-- <hr class="my-4" style="border: 1px solid #000;"> -->
+        </div>
+    </div>
+
+        <div *ngIf="trades.data == ''" class="container" style="margin-bottom: 16px;">
+            <div class="main-content text-center">
+                <h1>THERE'S NOTHING HERE TO SEE</h1>
+                <h3>Participate in a Auction</h3>
+            </div>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<app-footer></app-footer>

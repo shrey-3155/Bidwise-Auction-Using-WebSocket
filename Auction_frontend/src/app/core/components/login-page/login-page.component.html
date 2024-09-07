@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Into Your Account</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login-page.component.css">
+</head>
+<body>   
+    <!-- Log In Form -->
+    <app-logo-header></app-logo-header>
+    <div class="container d-flex justify-content-center align-items-center">
+        <form class="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <h2 class="text-center mb-4" style="font-weight: 400;">Log Into Your Account</h2>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="email" placeholder="error@mail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password" placeholder="●●●●●●●" required>
+            </div>
+            <div class="text-right mb-3">
+                <a href="/forget-password" class="text-primary">Forgot Your Password?</a>
+            </div>
+            <button type="submit" class="btn btn-outline-dark btn-block mr-2" [disabled]="loginForm.form.invalid">Log in</button>
+            <p class="text-center mt-3">Don't Have An Account? <a (click)="SignupRedirect()" class="text-primary">Sign Up</a></p>
+        </form>
+    </div>
+    <app-footer style="position: absolute; bottom: 0; width: 100%;"></app-footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+stages:
+  - build
+  - test
+  - publish
+  - deploy
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/Auction_backend/.m2/repository"
+
+cache:
+  paths:
+    - $CI_PROJECT_DIR/Auction_backend/.m2/repository
+
+build_frontend:
+  stage: build
+  image: node:latest
+  before_script:
+    - cd Auction_frontend/
+  script:
+    - echo "build frontEnd"
+    - npm install --legacy-peer-deps
+    - npm install -g @angular/cli
+    - ng build
+  artifacts:
+    paths:
+      - Auction_frontend/dist/auction-frontend/
+  tags:
+    - dalfcs_docker_kvm
+
+build_backend:
+  stage: build
+  image: maven:3.9.7-sapmachine-17
+  before_script:
+    - cd Auction_backend/
+  script:
+    - echo "Build backend"
+    - mvn clean install -DskipTests
+  artifacts:
+    paths:
+      - Auction_backend/target/
+  tags:
+    - dalfcs_docker_kvm
+
+test_backend:
+  stage: test
+  image: maven:3.9.7-sapmachine-17
+  before_script:
+    - cd Auction_backend/
+  script:
+    - echo "Loading the cache directory"
+    - echo $CI_PROJECT_DIR/Auction_backend/.m2/repository
+    - echo "Running Tests"
+    - mvn test
+  tags:
+    - dalfcs_docker_kvm
+
+publish_backend:
+  stage: publish
+  image: docker:latest
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - docker:dind
+  before_script:
+    - cd Auction_backend/
+  script:
+    - echo $DOCKER_HOST
+    - docker --version
+    - echo "Logging Docker"
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - echo "Building the Docker image for the Backend"
+    - docker build -t docker.io/$DOCKER_USERNAME/auctionbackend:$CI_COMMIT_SHORT_SHA .
+    - echo "Successfully build the docker image for the backend"
+    - docker push docker.io/$DOCKER_USERNAME/auctionbackend:$CI_COMMIT_SHORT_SHA
+  after_script:
+    - echo "Docker Image pushed successfully"
+    - docker logout
+  when: manual
+  tags:
+    - dalfcs_docker_kvm
+
+publish_frontend:
+  stage: publish
+  image: docker:latest
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  services:
+    - docker:dind
+  before_script:
+    - cd Auction_frontend/
+  script:
+    - echo $DOCKER_HOST
+    - docker --version
+    - echo "Logging Docker"
+    - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - echo "Building the Docker image"
+    - docker build -t docker.io/$DOCKER_USERNAME/auctionfrontend:$CI_COMMIT_SHORT_SHA .
+    - echo "Successfully build the docker image"
+    - docker push docker.io/$DOCKER_USERNAME/auctionfrontend:$CI_COMMIT_SHORT_SHA
+  after_script:
+    - echo "Docker Image pushed successfully"
+    - docker logout
+  when: manual
+  tags:
+    - dalfcs_docker_kvm
+
+deploy_build:
+  image: alpine:latest
+  variables:
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_TLS_CERTDIR: ""
+  stage: deploy
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apk add --update openssh )' 
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan $VM_IPADDRESS >> ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts 
+  script:  
+    - ssh $SSH_USER@$VM_IPADDRESS "hostname && echo 'Welcome!!!' > welcome.txt"
+    - ssh $SSH_USER@$VM_IPADDRESS "docker container rm -f auctionfrontend || true"
+    - ssh $SSH_USER@$VM_IPADDRESS "docker container rm -f auctionbackend || true"
+    - ssh $SSH_USER@$VM_IPADDRESS "docker run -d -p80:4200 --name auctionfrontend  $DOCKER_USERNAME/auctionfrontend:$CI_COMMIT_SHORT_SHA"
+    - ssh $SSH_USER@$VM_IPADDRESS "docker run -d -p8080:8080 --name auctionbackend $DOCKER_USERNAME/auctionbackend:$CI_COMMIT_SHORT_SHA"
+  when: manual
+  tags:
+    - dalfcs_docker_kvm

@@ -1,0 +1,111 @@
+<app-post-login-header></app-post-login-header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PROFILE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="user-profile.component.css">
+</head>
+<body>
+    <!-- Body Header -->
+    <div class="container mt-5">
+        <div class="text-start mb-4">
+            <h1 class="p-4">MY PROFILE</h1>
+        </div>
+    </div>
+
+
+    <!-- Profile Info -->
+    <div class="container mt-5">
+        <div class="row text-start">
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">NAME</p>
+                <p>{{ userProfile.firstName }} {{ userProfile.lastName }}</p>
+                <hr>
+            </div>
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">EMAIL</p>
+                <p>{{userProfile.email}}</p>
+                <hr>
+            </div>
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">COUNTRY</p>
+                <p>{{userProfile.countryName}}</p>
+                <hr>
+            </div>
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">CITY</p>
+                <p>{{userProfile.cityName}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dahsboard Header -->
+    <div class="container">
+        <div class="text-start mb-4">
+            <h1 class="p-4">DASHBOARD</h1>
+        </div>
+    </div>
+
+    <!-- DashBoard -->
+
+    <div class="container">
+        <div class="row text-start">
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">AUCTIONS PARTICIPATED</p>
+                <p>{{auctionsParticipated}}</p>
+                <hr>
+            </div>
+            <div class="col-md-3 mb-4">
+                <p class="font-weight-bold">ACCOUNT BALANCE</p>
+                <p>${{funds}}</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons to toggle charts -->
+    <div class="container text-start mb-4">
+        <button class="btn btn-outline-dark mr-2" (click)="showChart('chart1')">W/L BIDS</button>
+        <button class="btn btn-outline-dark mr-2" (click)="showChart('chart2')">CATEGORIZED BIDS</button>
+    </div>
+
+    <div class="container text-start">
+        <!-- Chart 1 -->
+        <div id="chart1" class="chart-container" [ngClass]="{'hidden': currentChart !== 'chart1'}">
+          <h2>WON BIDS AND LOST BIDS</h2>
+          <canvas baseChart
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [legend]="barChartLegend"
+                  [type]="barChartType">
+                </canvas>
+        </div>
+
+        <!-- Chart 2 -->
+        <div id="chart2" class="chart-container" [ngClass]="{'hidden': currentChart !== 'chart2'}">
+        <!-- <div id="chart2" class="chart-container"> -->
+          <h2>DIFFERENT CATEGORIES</h2>
+          <canvas baseChart
+                  [datasets]="pieChartData"
+                  [labels]="pieChartLabels"
+                  [options]="pieChartOptions"
+                  [legend]="pieChartLegend"
+                  [type]="pieChartType"></canvas>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<app-footer></app-footer>

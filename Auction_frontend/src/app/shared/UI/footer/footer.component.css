@@ -1,0 +1,16 @@
+footer {
+    background-color: #D1CECE;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer span {
+    margin: 0;
+}
+
+body {
+    font-size: 1.3rem;
+    background-color: #ffffff;
+}

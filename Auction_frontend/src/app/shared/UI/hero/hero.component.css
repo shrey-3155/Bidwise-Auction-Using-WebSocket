@@ -1,0 +1,55 @@
+.hero-section {
+    height: 80vh;
+    position: relative;
+    /* box-shadow: 0 0 6px 6px; */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('auction.jpeg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);  /* Apply blur here */
+    z-index: 0;  /* Ensure it stays behind the text */
+}
+
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;  /* Overlay on top of the background */
+}
+
+.hero-section .text-white {
+    position: relative;
+    z-index: 2;  /* Highest, ensures text is sharp and readable */
+}
+
+.hero-section h1 {
+    font-size: 6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section h2 {
+    font-size: 2.1srem;
+    font-weight: 400;
+}
+
+@media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1432px;
+    }
+}
+
+@media (min-width: 992px) {
+    .rounded-lg-3 { border-radius: .3rem; }
+  }

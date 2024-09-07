@@ -1,0 +1,145 @@
+<app-post-login-header></app-post-login-header>
+
+<div class="container mt-5">
+  <div class="text-start mb-4">
+    <h1 class="d-flex justify-content-between align-items-center p-3" style="border: 2px solid #000; font-size: 1.5rem;">TELL US ABOUT YOUR ITEM</h1>
+  </div>
+</div>
+
+<div class="container mt-5" style="margin-bottom: 16px;">
+  <h3>GENERAL INFORMATION</h3>
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="itemName">NAME OF ITEM</label>
+      <input type="text" class="form-control" id="itemName" formControlName="itemName" placeholder="SAMSUNG EARBUDS">
+      <div *ngIf="itemForm.controls['itemName'].invalid && itemForm.controls['itemName'].touched" class="text-danger">
+        Item name is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="itemMaker">MAKER OF THE ITEM</label>
+      <input type="text" class="form-control" id="itemMaker" formControlName="itemMaker" placeholder="SAMSUNG">
+      <div *ngIf="itemForm.controls['itemMaker'].invalid && itemForm.controls['itemMaker'].touched" class="text-danger">
+        Item maker is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">DESCRIPTION OF ITEM</label>
+      <input type="text" class="form-control" id="description" formControlName="description" placeholder="Description">
+      <div *ngIf="itemForm.controls['description'].invalid && itemForm.controls['description'].touched" class="text-danger">
+        Item description is required.
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="pricePaid" class="col-sm-2 col-form-label">PRICE PAID</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="pricePaid" formControlName="pricePaid" placeholder="$70">
+        <div *ngIf="itemForm.controls['pricePaid'].invalid && itemForm.controls['pricePaid'].touched" class="text-danger">
+          Valid price is required.
+        </div>
+      </div>
+      <label for="currency" class="col-sm-2 col-form-label">CURRENCY</label>
+      <div class="col-sm-4">
+        <select class="form-control" id="currency" formControlName="currency">
+          <option>USD</option>
+          <option>EUR</option>
+          <option>GBP</option>
+          <option>INR</option>
+        </select>
+        <div *ngIf="itemForm.controls['currency'].invalid && itemForm.controls['currency'].touched" class="text-danger">
+          Currency is required.
+        </div>
+      </div>
+    </div>
+    <h3>CONDITION</h3>
+    <div class="d-flex flex-column form-group flex-md-row">
+      <div class="form-check form-check-inline">
+        <input class="form-check-input custom-radio-checkbox" type="radio" id="newCondition" value="NEW" formControlName="itemCondition">
+        <label class="form-check-label" for="newCondition">NEW</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input custom-radio-checkbox" type="radio" id="usedCondition" value="FEWTIMESUSED" formControlName="itemCondition">
+        <label class="form-check-label" for="usedCondition">USED A FEW TIMES</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input custom-radio-checkbox" type="radio" id="restoredCondition" value="RESTORED" formControlName="itemCondition">
+        <label class="form-check-label" for="restoredCondition">RESTORED/REFURBISHED</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input custom-radio-checkbox" type="radio" id="oldCondition" value="OLD" formControlName="itemCondition">
+        <label class="form-check-label" for="oldCondition">OLD/USED VERY OFTEN</label>
+      </div>
+      <div *ngIf="itemForm.controls['itemCondition'].invalid && itemForm.controls['itemCondition'].touched" class="text-danger">
+        Item condition is required.
+      </div>
+    </div>
+    <h3>PRICE</h3>
+    <div class="form-group row">
+      <label for="minBidAmount" class="col-sm-2 col-form-label">INITIAL BIDDING PRICE</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" id="minBidAmount" formControlName="minBidAmount" placeholder="$55">
+        <div *ngIf="itemForm.controls['minBidAmount'].invalid && itemForm.controls['minBidAmount'].touched" class="text-danger">
+          Valid initial bidding price is required.
+        </div>
+      </div>
+    </div>
+    <h3>TIME</h3>
+    <div class="form-group row">
+      <!-- <div class="form-group row align-items-center"> -->  
+        <label for="startDate" class="col-sm-2 col-form-label">BIDDING START DATE</label>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" id="startDate" formControlName="startDate">
+          <div *ngIf="itemForm.controls['startDate'].invalid && itemForm.controls['startDate'].touched" class="text-danger">
+            Bidding start date is required.
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="form-group row align-items-center"> -->
+        <label for="startTime" class="col-sm-2 col-form-label">BIDDING START TIME</label>
+        <div class="col-sm-4">
+          <input type="time" class="form-control" id="startTime" formControlName="startTime">
+          <div *ngIf="itemForm.controls['startTime'].invalid && itemForm.controls['startTime'].touched" class="text-danger">
+            Bidding start time is required.
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+    
+    <div class="form-group row">
+      <!-- <div class="form-group row align-items-center"> -->
+        <label for="endDate" class="col-sm-2 col-form-label">BIDDING END DATE</label>
+        <div class="col-sm-4">
+          <input type="date" class="form-control" id="endDate" formControlName="endDate">
+          <div *ngIf="itemForm.controls['endDate'].invalid && itemForm.controls['endDate'].touched" class="text-danger">
+            Bidding end date is required.
+          </div>
+        </div>
+      <!-- </div> -->
+      <!-- <div class="form-group row align-items-center"> -->
+        <label for="endTime" class="col-sm-2 col-form-label">BIDDING END TIME</label>
+        <div class="col-sm-4">
+          <input type="time" class="form-control" id="endTime" formControlName="endTime">
+          <div *ngIf="itemForm.controls['endTime'].invalid && itemForm.controls['endTime'].touched" class="text-danger">
+            Bidding end time is required.
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+    <div *ngIf="itemForm.hasError('invalidDateRange')" class="text-danger">
+      The start date and time must be before the end date and time.
+    </div>
+    
+    <h3>PHOTOS</h3>
+<div class="form-group">
+  <input type="file" class="form-control-file" (change)="onFileChange($event)" accept="image/*" id="itemPhoto" name="itemPhoto">
+  <div *ngIf="itemPhotoInvalid && itemPhotoTouched" class="text-danger">
+    Photo is required.
+  </div>
+</div>
+
+    <h2 class="font-weight-bold">LIST THE ITEM</h2>
+    <button type="submit" class="btn btn-outline-dark" style="margin-bottom: 8px;" [disabled]="itemForm.invalid">LIST ITEM</button>
+  </form>
+</div>
+
+<app-footer></app-footer>

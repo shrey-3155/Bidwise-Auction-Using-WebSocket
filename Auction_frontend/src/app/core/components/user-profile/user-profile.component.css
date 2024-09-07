@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 2px solid #000;
+}
+
+.btn{
+    border: 2px solid;
+}
+
+.btn-outline-dark {
+    border-color: #000;
+    color: #000;
+}
+
+.btn-outline-dark:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-dark {
+    background-color: #000;
+    border-color: #000;
+}
+
+.btn-dark:hover {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+p {
+    margin: 0;
+}
+
+hr {
+    border-top: 2px solid #000000;
+    width: auto;
+    margin: auto;
+}
+
+.chart-container {
+    width: 100%;
+    max-width: 500px;
+    /* margin: 0 auto; */
+}
+.chart-container canvas {
+    width: 100% !important;
+    height:100% !important;
+}
+.hidden {
+    display: none;
+}

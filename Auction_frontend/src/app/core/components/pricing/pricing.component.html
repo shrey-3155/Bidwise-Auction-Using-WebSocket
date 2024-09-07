@@ -1,0 +1,91 @@
+<app-post-login-header></app-post-login-header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div *ngIf="isPremiumUser">
+    <div class="container mt-5">
+      <div class="text-start mb-4">
+          <h1 class="d-flex justify-content-between align-items-center p-3" style="border: 2px solid #000; font-weight: 700; font-size: 1.5rem;">Premium Membership</h1>
+      </div>
+    </div>
+    <div class="container" style="margin-bottom: 16px;">
+      <div class="main-content text-center">
+        <h1>Thank you for being a premium member!</h1>
+        <h3>You already have access to all premium features.</h3>
+        <h6>Click here to <a (click)="cancelSubscription()">CANCEL YOUR SUBSCRIPTION</a>.</h6>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isPremiumUser">
+    <div class="container mt-5">
+      <div class="text-start mb-4">
+          <h1 class="d-flex justify-content-between align-items-center p-3" style="border: 2px solid #000; font-weight: 700; font-size: 1.5rem;">Premium Membership</h1>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center align-items-center">
+
+    
+    <form [formGroup]="pricingForm" (ngSubmit)="submitPayment()" class="signup-form">
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input id="cardNumber" class="form-control" formControlName="cardNumber" placeholder="Card Number" required />
+        <div *ngIf="pricingForm.controls['cardNumber'].invalid && pricingForm.controls['cardNumber'].touched" class="text-danger">
+          Card Information
+      </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-2">
+          <label for="expiryDate">Expiry Date</label>
+          <input type="text" class="form-control" id="expiry" name="expiry" formControlName="expiry" placeholder="MM / YY" required />
+          <div *ngIf="pricingForm.controls['expiry'].invalid && pricingForm.controls['expiry'].touched" class="text-danger">
+            Expiry is required.
+          </div>
+        </div>
+        <div class="col-md-6 mb-2">
+          <label for="cvc">CVC</label>
+          <input id="cvc" class="form-control" formControlName="cvc" placeholder="CVC" required />
+          <div *ngIf="pricingForm.controls['cvc'].invalid && pricingForm.controls['cvc'].touched" class="text-danger">
+            CVC is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cardHolderName">Card Holder Name</label>
+        <input id="cardHolderName" class="form-control" formControlName="cardHolderName" placeholder="Card Holder Name" required/>
+        <div *ngIf="pricingForm.controls['cardHolderName'].invalid && pricingForm.controls['cardHolderName'].touched" class="text-danger">
+          Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" class="form-control" formControlName="email" placeholder="Email" required/>
+        <div *ngIf="pricingForm.controls['email'].invalid && pricingForm.controls['email'].touched" class="text-danger">
+          Email is required.
+        </div> 
+      </div>
+
+      <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input custom-radio-checkbox" id="terms" formControlName="terms" required/>
+        <label class="form-check-label" for="terms">I have read and agree to the Privacy Policy, Terms and Conditions, and Terms of Service.</label>
+        <div *ngIf="pricingForm.controls['terms'].invalid && pricingForm.controls['terms'].touched" class="text-danger">
+          Selecting terms is required.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark btn-block mr-2" style="margin-bottom: 16px;" [disabled]="pricingForm.invalid">Submit</button>
+    </form>
+
+  </div>
+  </div>
+  
+</body>
+</html>
+<app-footer></app-footer>

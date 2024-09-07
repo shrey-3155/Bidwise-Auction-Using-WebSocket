@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Funds</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="add-funds.component.css">
+</head>
+<body>
+    <app-logo-header></app-logo-header>
+    <!-- Add Funds Form -->
+    <div class="container d-flex justify-content-center align-items-center">
+        <form [formGroup]="addFundsForm" (ngSubmit)="onSubmit()" class="signup-form">
+            <h2 class="text-center mb-4">Add Funds To Your Account</h2>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" formControlName="email" name="email" placeholder="error@mail.com" required>
+                <div *ngIf="addFundsForm.controls['email'].invalid && addFundsForm.controls['email'].touched" class="text-danger">
+                    Email is required.
+                </div>            
+            </div>
+            <div class="form-group">
+                <label for="cardNumber">Card Information</label>
+                <input type="text" class="form-control mb-2" id="cardNumber" formControlName="cardNumber" name="cardNumber" placeholder="1234 5678 1234 5678" required>
+                <div *ngIf="addFundsForm.controls['cardNumber'].invalid && addFundsForm.controls['cardNumber'].touched" class="text-danger">
+                    Card Information
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <input type="text" class="form-control" id="expiry" name="expiry" formControlName="expiry" placeholder="MM / YY" required>
+                        <div *ngIf="addFundsForm.controls['expiry'].invalid && addFundsForm.controls['expiry'].touched" class="text-danger">
+                            Expiry is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <input type="text" class="form-control" id="cvc" name="cvc" formControlName="cvc" placeholder="CVC" required>
+                        <div *ngIf="addFundsForm.controls['cvc'].invalid && addFundsForm.controls['cvc'].touched" class="text-danger">
+                            CVC is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cardholderName">Full Name on Card</label>
+                <input type="text" class="form-control" id="cardholderName" formControlName="cardholderName" name="cardholderName" placeholder="Cardholder Name" required>
+                <div *ngIf="addFundsForm.controls['cardholderName'].invalid && addFundsForm.controls['cardholderName'].touched" class="text-danger">
+                    Name is required.
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="address">Billing Address</label>
+                <input type="text" class="form-control mb-2" id="address" name="address" formControlName="address" placeholder="1233 Carlton Street" required>
+                <div *ngIf="addFundsForm.controls['address'].invalid && addFundsForm.controls['address'].touched" class="text-danger">
+                    Address is required.
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <input type="text" class="form-control" id="country" name="country" formControlName="country" placeholder="Canada" required>
+                        <div *ngIf="addFundsForm.controls['country'].invalid && addFundsForm.controls['country'].touched" class="text-danger">
+                            Country is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <input type="text" class="form-control" id="city" name="city" formControlName="city" placeholder="Halifax" required>
+                        <div *ngIf="addFundsForm.controls['city'].invalid && addFundsForm.controls['city'].touched" class="text-danger">
+                            City is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount of Funds</label>
+                <div class="form-row">
+                    <div class="col-md-6 mb-2">
+                        <input type="text" class="form-control mb-2" id="amount" name="amount" formControlName="amount" placeholder="1233" required>
+                        <div *ngIf="addFundsForm.controls['amount'].invalid && addFundsForm.controls['amount'].touched" class="text-danger">
+                            Amount is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <select class="form-control" id="currency" name="currency" formControlName="currency" required>
+                            <option value="USD">USD</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="CAD">CAD</option>
+                            <option value="AUD">AUD</option>
+                            <option value="JPY">JPY</option>
+                            <option value="INR">INR</option>
+                            <!-- Add more currencies as needed -->
+                        </select>
+                        <div *ngIf="addFundsForm.controls['currency'].invalid && addFundsForm.controls['currency'].touched" class="text-danger">
+                            Currency is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input custom-radio-checkbox" id="terms" formControlName="terms" required>
+                <label class="form-check-label" for="terms">I have read and agree to the Privacy Policy, Terms and Conditions, and Terms of Service.</label>
+                <div *ngIf="addFundsForm.controls['terms'].invalid && addFundsForm.controls['terms'].touched" class="text-danger">
+                    Selecting terms is required.
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-dark btn-block mr-2" style="margin-bottom: 16px;" [disabled]="addFundsForm.invalid">ADD FUNDS</button>
+        </form>
+    </div> 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+<app-footer></app-footer>

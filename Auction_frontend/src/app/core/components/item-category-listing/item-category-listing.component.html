@@ -1,0 +1,112 @@
+<app-post-login-header></app-post-login-header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Categories</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="item-category-listing.component.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="text-start mb-4">
+            <h1 class="p-4">CHOOSE CATEGORY OF YOUR PRODUCT</h1>
+        </div>
+    </div>
+
+    <div class="container mt-5" style="margin-bottom: 16px;">
+        <div class="product-grid">
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Paintings' }">
+                    <div class="card">
+                        <img src="assets/images/paint.jpeg" class="card-img-top" alt="Paintings">
+                    </div>
+                </a>
+                <p class="card-text">Paintings</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Watches' }">
+                    <div class="card">
+                        <img src="assets/images/watch.jpeg" class="card-img-top" alt="Watches">
+                    </div>
+                </a>
+                <p class="card-text">Watches</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Jewellery' }">
+                    <div class="card">
+                        <img src="assets/images/jewellery.jpeg" class="card-img-top" alt="Jewellery">
+                    </div>
+                </a>
+                <p class="card-text">Jewellery</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Clothes' }">
+                    <div class="card">
+                        <img src="assets/images/clothes.jpg" class="card-img-top" alt="Clothes">
+                    </div>
+                </a>
+                <p class="card-text">Clothes</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Furniture' }">
+                    <div class="card">
+                        <img src="assets/images/furniture.jpg" class="card-img-top" alt="Furniture">
+                    </div>
+                </a>
+                <p class="card-text">Furniture</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Automobiles' }">
+                    <div class="card">
+                        <img src="assets/images/automobile.jpeg" class="card-img-top" alt="Automobiles">
+                    </div>
+                </a>
+                <p class="card-text">Automobiles</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Electronics' }">
+                    <div class="card">
+                        <img src="assets/images/electronics.jpg" class="card-img-top" alt="Electronics">
+                    </div>
+                </a>
+                <p class="card-text">Electronics</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Shoes' }">
+                    <div class="card">
+                        <img src="assets/images/shoes.jpeg" class="card-img-top" alt="Shoes">
+                    </div>
+                </a>
+                <p class="card-text">Shoes</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Sculptures' }">
+                    <div class="card">
+                        <img src="assets/images/sculptures.jpeg" class="card-img-top" alt="Sculptures">
+                    </div>
+                </a>
+                <p class="card-text">Sculptures</p>
+            </div>
+            <div class="product-card">
+                <a [routerLink]="['/itemListing']" [queryParams]="{ category: 'Others' }">
+                    <div class="card">
+                        <img src="assets/images/others.jpeg" class="card-img-top" alt="Others">
+                    </div>
+                </a>
+                <p class="card-text">Others</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<app-footer></app-footer>

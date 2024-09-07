@@ -1,0 +1,397 @@
+
+.all-auctions {
+    margin-bottom: 50px;
+  }
+ 
+  .heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+ 
+  .heading-container h2 {
+    margin: 0;
+  }
+ 
+  .all-auctions .container.d-inline-flex,
+  .upcoming-auctions .container.d-inline-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+ 
+  h2 {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+ 
+  h2::after {
+    content: '';
+    display: block;
+    width: 95%;
+    height: 3px;
+    background-color: rgb(200, 173, 15);
+    position: absolute;
+    bottom: -5px;
+    left: 49%;
+    transform: translateX(-50%);
+  }
+ 
+  @media (min-width: 1200px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl {
+      max-width: 1432px;
+    }
+  }
+ 
+  .auction-cards {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+ 
+  .card-container {
+    flex: 1 0 30%;
+    display: flex;
+    max-width: 30%;
+    margin-left: 29px;
+  }
+ 
+  .btn {
+    border: 2px solid;
+  }
+ 
+  .btn-outline-dark {
+    border-color: #000;
+    color: #000;
+  }
+ 
+  .btn-outline-dark:hover {
+    background-color: #000;
+    color: #fff;
+  }
+ 
+  .btn-dark {
+    background-color: #000;
+    border-color: #000;
+  }
+ 
+  .btn-dark:hover {
+    background-color: #000000;
+    border-color: #000000;
+  }
+  .card {
+    width: 18rem;
+    border: 1px solid rgb(255 255 255 / 13%);
+  }
+ 
+  .card-img-top {
+    border-radius: calc(.25rem - 1px);
+  }
+
+  /* Suggested for you */
+.suggested-for-you {
+  margin-bottom: 50px;
+}
+
+.auctions-categories {
+  margin-bottom: 50px;
+}
+
+.auctions-list {
+  display: flex;
+  justify-content: space-around;
+}
+
+.auction-item {
+  text-align: center;
+}
+
+.auction-item img {
+  max-width: 100%;
+}
+
+/* Upcoming Section */
+.upcoming-auctions {
+  margin-bottom: 50px;
+}
+
+.heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.heading-container h2 {
+  margin: 0;
+}
+
+.heading-container .more-link a {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: larger;
+  text-decoration: none;
+  color: #000;
+}
+
+.heading-container .more-link a:hover {
+  text-decoration: underline;
+}
+
+.upcoming-auctions .container.d-inline-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.upcoming-auctions .container .card {
+  width: 18rem;
+  margin-right: 15px;
+}
+
+.more-link {
+  align-self: center;
+  margin-left: auto;
+}
+
+.more-link a {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: larger;
+  align-self: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.more-link a:hover {
+  text-decoration: underline;
+}
+
+/* How it works Section */
+.how-it-works {
+  margin-bottom: 50px;
+}
+
+.howitworks {
+  font-size: 1.75rem;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-around;
+}
+
+.step {
+  text-align: center;
+}
+
+/* Feature Section */
+.features {
+  margin-bottom: 50px;
+  /* text-align: center; */
+}
+
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.feature {
+  flex: 0 1 calc(50.333% - 10px);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.feature img {
+  max-width: 50px;
+  margin-right: 10px;
+  margin-top: -46px;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pricing Section */
+.pricing {
+  margin-bottom: 50px;
+}
+
+.pricing-tiers {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.tier {
+  flex: 0 1 calc(33.333% - 20px);
+  margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.tier:hover {
+  transform: translateY(-10px);
+}
+
+.tier h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+  background-color: #e0e0e0; /* Grey background for title */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.tier .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #666565;
+  margin-bottom: 20px;
+}
+
+.tier ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.tier ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.tier .btn {
+  background-color: #f9f9f9;
+  color: #666565;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 2px solid #000000;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.tier .btn:hover {
+  background-color: #000000;
+  color: #fcf8f8;
+}
+
+/* Style the headings with a golden underline */
+h2 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 95%;
+  height: 3px;
+  background-color: rgb(200, 173, 15); /* Set the color of the underline */
+  position: absolute;
+  bottom: -5px;
+  left: 49%;
+  transform: translateX(-50%);
+}
+
+@media (min-width: 1200px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1432px;
+  }
+}
+
+.auction-cards {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.card-container {
+  flex: 1 0 30%;
+  max-width: 30%;
+}
+
+.card {
+  border: 1px solid rgb(255 255 255 / 13%);
+}
+
+.card-img-top {
+  border-radius: calc(.25rem - 1px);
+  object-fit: cover;
+  width: 100%;
+  height: 300px; /* Adjust this value as needed */
+  border: 1px solid black; /* Add a thin black border */
+}
+
+.item-title {
+  font-weight: 500;
+  font-size: larger;
+  margin-bottom: 0px;
+}
+
+.item-details {
+  font-size: 0.85rem;
+  margin-bottom: 0px;
+}
+
+.btn {
+  border: 2px solid;
+}
+
+.btn-outline-dark {
+  border-color: #000;
+  color: #000;
+}
+
+.btn-outline-dark:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-dark {
+  background-color: #000;
+  border-color: #000;
+}
+
+.btn-dark:hover {
+  background-color: #000000;
+  border-color: #000000;
+}
+
+/*Suggested for you*/
+ 
+.suggested-for-you{
+  margin-bottom: 50px;
+}
+ 
+.auctions-categories{
+  margin-bottom: 50px;
+}
+.auctions-list {
+  display: flex;
+  justify-content: space-around;
+}
+ 
+.auction-item {
+  text-align: center;
+}
+ 
+.auction-item img {
+  max-width: 100%;
+}
